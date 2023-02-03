@@ -128,5 +128,6 @@ int totalFee;       // 누적 요금
   * `void setDestDist(int DestDist)` : 목적지까지 거리 설정
 
 ### 3. 구현
+* abstract class `AbstractTransportation` implements `Transportation`
 * class `Bus` extends `AbstractTransportation` implements `ChangeStatusWithParameter` 
 * class `Taxi` extends `AbstractTransportation` implements `ChangeStatusWithNoParameter`, `SetDestination`
