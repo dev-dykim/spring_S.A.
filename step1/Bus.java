@@ -10,19 +10,16 @@ public class Bus {
     private String status;      // 상태
 
     static int bus_idx = 0;
+    static final int BASIC_FEE = 1000;
 
     public Bus() {
         bus_number = ++bus_idx;
+        max_passenger = 30;
+        cur_passenger = 0;
+        fee = 0;
+        fueling = 100;
+        speed = 50;
         status = "운행";
-    }
-
-    public Bus(int max_passenger, int cur_passenger, int fee, int fueling, int speed) {
-        this();
-        this.max_passenger = max_passenger;
-        this.cur_passenger = cur_passenger;
-        this.fee = fee;
-        this.fueling = fueling;
-        this.speed = speed;
 
         System.out.println(this.bus_number + "번 버스가 생성되었습니다.");
     }
@@ -38,17 +35,16 @@ public class Bus {
         return this.fueling;
     }
 
-    public void setFueling(int fueling) {
-        this.fueling = fueling;
+    public void chgFueling(int fueling) {
+        this.fueling += fueling;
         checkFueling();
     }
 
     public void checkFueling() {
-        if (this.fueling < 10)
+        if (this.fueling < 10) {
             System.out.println("주유가 필요합니다.");
-
-        if (this.fueling == 0)
             this.status = "차고지행";
+        }
     }
 
     public void setStatus(String status) {
@@ -62,11 +58,7 @@ public class Bus {
         checkFueling();
     }
 
-    public String getStatus() {
-        return status;
-    }
-
-    public void setCur_passenger(int passenger) {
+    public void addCur_passenger(int passenger) {
         if (this.cur_passenger + passenger > this.max_passenger)
             System.out.println("최대 승객 수는 " + this.max_passenger + "명 입니다. 현재 승객 수는 최대 승객 수를 초과할 수 없습니다.");
 
@@ -76,18 +68,17 @@ public class Bus {
         if (this.cur_passenger + passenger <= this.max_passenger && this.status.equals("운행")) {
             this.cur_passenger += passenger;
         }
+
+        this.fee = BASIC_FEE * this.cur_passenger;
     }
 
-    public void setSpeed(String sign, int speed) {
+    public void chgSpeed(int speed) {
         if (getFueling() < 10) {
             System.out.println("주유량을 확인해주세요.");
             return;
         }
 
-        if (sign.equals("+"))
-            this.speed += speed;
-        else if (sign.equals("-"))
-            this.speed -= speed;
+        this.speed += speed;
     }
 
 }
