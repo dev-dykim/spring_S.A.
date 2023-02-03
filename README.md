@@ -42,7 +42,7 @@ public Bus() {
 * `void setStatus(String status)` : "종료" 또는 "운행"을 입력받아 현재 상태를 바꾼다. 상태를 바꿀 때 주유량을 체크한다.
 * `void addCur_passenger(int passenger)` : 입력받은 passenger 수만큼 현재 승객 수를 업데이트한다. 단, 최대 승객 수를 넘지 않아야 하고 운행중인 버스여야 한다.
 * `void chgSpeed(int speed)` : 속도를 입력받아 현재 속도를 업데이트한다. 단, 주유량이 10 이상인 경우 속도 업데이트가 가능하며, 미만인 경우 경고 메시지를 출력한다.
-
+---
 ## step2. Taxi class 만들기
 
 ### 1. 변수설정
@@ -93,7 +93,7 @@ public Taxi() {
 * `void chgSpeed(int speed)` : 속도를 입력받아 현재 속도를 업데이트한다.
 * `void calculatePsg_fee()` : 승객이 내야할 요금을 계산한다.
 * `void payFee()` : 승객이 요금을 지불한 후, 택시의 누적금액을 더해준다. 지불이 끝난 택시의 상태를 초기화해준다.
-
+---
 ## step3. 추상클래스 및 인터페이스 확장
 
 ### 1. 추상클래스 
@@ -118,7 +118,7 @@ int totalFee;       // 누적 요금
   * `void checkFueling()` : 연료량 10 미만인지 체크
   * `void addCurPassenger(int passenger)` : 승객 탑승
   * `void chgSpeed(int spped)` : 속도 변경
-  * `void payFee()` : 요금 계₩
+  * `void payFee()` : 요금 계산
 * `ChangeStatusWithParameter` : 상태값 변경(파라미터 있는 경우) 
   * `void chgStatus(String status)`
 * `ChangeStatusWithNoParameter` : 상태값 변경(파라미터 없는 경우)
