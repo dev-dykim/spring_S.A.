@@ -93,3 +93,40 @@ public Taxi() {
 * `void chgSpeed(int speed)` : 속도를 입력받아 현재 속도를 업데이트한다.
 * `void calculatePsg_fee()` : 승객이 내야할 요금을 계산한다.
 * `void payFee()` : 승객이 요금을 지불한 후, 택시의 누적금액을 더해준다. 지불이 끝난 택시의 상태를 초기화해준다.
+
+## step3. 추상클래스 및 인터페이스 확장
+
+### 1. 추상클래스 
+* `abstract class AbstractTransportation`
+    * 공통 변수 선언
+```java
+int number;     // 번호
+int maxPassenger;  // 최대 승객 수
+int curPassenger;  // 현재 승객 수
+int fueling = 100;        // 주유량
+int speed = 10;          // 현재 속도
+String status;      // 상태
+int basicFee;       // 기본 요금
+int totalFee;       // 누적 요금
+```
+* 공통 메서드 선언
+  * `void chgFueling(int fueling)` : 주유량 변경 메서드
+  * `void checkPassengerNum(int passenger)` : 승객 수 체크 메서드
+
+### 2. 인터페이스
+* `Transportation` : 공통 사용
+  * `void checkFueling()` : 연료량 10 미만인지 체크
+  * `void addCurPassenger(int passenger)` : 승객 탑승
+  * `void chgSpeed(int spped)` : 속도 변경
+  * `void payFee()` : 요금 계₩
+* `ChangeStatusWithParameter` : 상태값 변경(파라미터 있는 경우) 
+  * `void chgStatus(String status)`
+* `ChangeStatusWithNoParameter` : 상태값 변경(파라미터 없는 경우)
+  * `void chgStatus()`
+* `setDestination` : 목적지 세팅
+  * `void setDestination(String destination)` : 목적지 설정
+  * `void setDestDist(int DestDist)` : 목적지까지 거리 설정
+
+### 3. 구현
+* class `Bus` extends `AbstractTransportation` implements `ChangeStatusWithParameter` 
+* class `Taxi` extends `AbstractTransportation` implements `ChangeStatusWithNoParameter`, `SetDestination`
